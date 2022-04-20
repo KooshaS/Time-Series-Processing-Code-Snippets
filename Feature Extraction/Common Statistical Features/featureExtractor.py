@@ -4,8 +4,6 @@ import numpy as np
 import pandas as pd
 
 train = pd.read_csv('dataset/train.csv')
-labels = pd.read_csv('dataset/train_labels.csv')
-test = pd.read_csv('dataset/test.csv')
 
 def aggregated_features(df, aggregation_cols=['sequence'], prefix=''):
     agg_strategy = {'sensor_00': ['mean', 'max', 'min', 'var', 'mad', 'sum', 'median'],
@@ -33,7 +31,5 @@ def aggregated_features(df, aggregation_cols=['sequence'], prefix=''):
 
 
 train_merge_data = aggregated_features(train, aggregation_cols = ['sequence', 'subject'])
-test_merge_data = aggregated_features(test, aggregation_cols = ['sequence', 'subject'])
-
 train_subjects_merge_data = aggregated_features(train, aggregation_cols = ['subject'], prefix = 'subject_')
-test_subjects_merge_data = aggregated_features(test, aggregation_cols = ['subject'], prefix = 'subject_')
+
