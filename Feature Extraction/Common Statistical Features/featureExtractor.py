@@ -1,33 +1,9 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import warnings
-warnings.filterwarnings('ignore')
 
 train = pd.read_csv('dataset/train.csv')
 labels = pd.read_csv('dataset/train_labels.csv')
 test = pd.read_csv('dataset/test.csv')
-submission = pd.read_csv('dataset/sample_submission.csv')
-
-print(train.isnull().sum(axis=0))
-
-train = train.merge(labels, how='left', on='sequence')
-
-sequences = [20, 21, 22, 23, 24, 25]
-figure, axes = plt.subplots(13, len(sequences), sharex=True, figsize=(16, 16))
-for i, sequence in enumerate(sequences):
-    for sensor in range(13):
-        sensor_name = f"sensor_{sensor:02d}"
-        plt.subplot(13, len(sequences), sensor * len(sequences) + i + 1)
-        plt.plot(range(60), train[train.sequence == sequence][sensor_name],
-                 color=plt.rcParams['axes.prop_cycle'].by_key()['color'][i % 10])
-        if sensor == 0: plt.title(f"Sequence {sequence}")
-        if sequence == sequences[0]: plt.ylabel(sensor_name)
-figure.tight_layout(w_pad=0.1)
-plt.suptitle('Selected time series', y=1.02)
-# plt.show()
-
 
 def aggregated_features(df, aggregation_cols=['sequence'], prefix=''):
     agg_strategy = {'sensor_00': ['mean', 'max', 'min', 'var', 'mad', 'sum', 'median'],
