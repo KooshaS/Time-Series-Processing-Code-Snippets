@@ -29,7 +29,11 @@ def aggregated_features(df, aggregation_cols=['sequence'], prefix=''):
     group = pd.merge(temp, group, how='left', on=aggregation_cols, )
     return group
 
-
+# calculated features over each sequence
 train_merge_data = aggregated_features(train, aggregation_cols = ['sequence', 'subject'])
+# calculated features over all the sequences for a given subject
 train_subjects_merge_data = aggregated_features(train, aggregation_cols = ['subject'], prefix = 'subject_')
+
+
+
 
