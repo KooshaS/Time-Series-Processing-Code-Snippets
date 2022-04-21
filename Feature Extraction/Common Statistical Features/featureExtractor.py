@@ -26,7 +26,7 @@ def aggregated_features(df, aggregation_cols=['sequence'], prefix=''):
     group.reset_index(inplace=True)
 
     temp = (df.groupby(aggregation_cols).size().reset_index(name=str(prefix) + 'size'))
-    group = pd.merge(temp, group, how='left', on=aggregation_cols, )
+    group = pd.merge(temp, group, how='left', on=aggregation_cols)
     return group
 
 # calculated features over each sequence
