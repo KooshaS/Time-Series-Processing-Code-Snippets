@@ -1,4 +1,4 @@
-# https://www.kaggle.com/code/tyrionlannisterlzy/xgboost-dnn-ensemble-lb-0-980/notebook
+# Ref: https://www.kaggle.com/code/tyrionlannisterlzy/xgboost-dnn-ensemble-lb-0-980/notebook
 
 import matplotlib.pyplot as plt
 
